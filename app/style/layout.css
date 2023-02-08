@@ -1,14 +1,33 @@
 @import 'variables.css';
 
-header {
+.header {
   background-color: var(--bg-main-color);
   display: flex;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
 }
 
-header nav ul {
+.header__container {
   display: flex;
+  width: 100%;
+  max-width: 767px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-footer {
+.header nav {
+  width: 20%;
+}
+
+.header nav ul {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer {
   background-color: var(--bg-main-color);
 }
