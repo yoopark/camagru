@@ -1,0 +1,14 @@
+@import 'variables.css';
+
+header {
+  background-color: var(--bg-main-color);
+  display: flex;
+}
+
+header nav ul {
+  display: flex;
+}
+
+footer {
+  background-color: var(--bg-main-color);
+}
