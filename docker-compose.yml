@@ -10,6 +10,7 @@ services:
       - ./app:/app
     depends_on:
       - was
+    restart: unless-stopped
 
   was:
     container_name: was
@@ -26,6 +27,7 @@ services:
       DB_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
       - db
+    restart: unless-stopped
 
   db:
     container_name: db
@@ -39,6 +41,7 @@ services:
       MYSQL_DATABASE: camagru
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: unless-stopped
 
   db-admin:
     container_name: db-admin
@@ -50,6 +53,7 @@ services:
       PMA_PORT: 3306
     depends_on:
       - db
+    restart: unless-stopped
 
 volumes:
   data:
