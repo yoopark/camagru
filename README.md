@@ -5,3 +5,4 @@
 ---
 
 - docker-compose down -v 를 써야 volume이 제대로 삭제됨.
+- https://www.youtube.com/watch?v=lSVGLzGBEe0

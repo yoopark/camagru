@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="/style/index.css">
 </head>
 <body>
-  <?php
-    include('/app/components/header.php');
-  ?>
-  <p>It is Body.</p>
+  <?php include '/app/components/header.php'; ?>
 </body>
 </html>
