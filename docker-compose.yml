@@ -1,0 +1,51 @@
+version: '3'
+services:
+  ws:
+    container_name: ws
+    image: nginx:alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl:/etc/ssl
+      - ./app:/app
+    depends_on:
+      - was
+
+  was:
+    container_name: was
+    image: php:fpm-alpine
+    ports:
+      - 9000:9000
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: mysql:8.0
+    expose:
+      - 3306
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: camagru
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  db-admin:
+    container_name: db-admin
+    image: phpmyadmin:latest
+    ports:
+      - 3306:80
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    depends_on:
+      - db
+
+volumes:
+  data:
