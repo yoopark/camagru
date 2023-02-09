@@ -4,12 +4,13 @@
 
 html {
   font-family: 'Rubik 80s Fade', cursive;
-  background-image: url('/assets/y2k-bg.webp');
+  background-image: url('/asset/y2k-bg.webp');
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -22,6 +23,6 @@ a {
   color: inherit;
 }
 
-ul {
+li {
   list-style: none;
 }
