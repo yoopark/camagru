@@ -8,11 +8,36 @@
   <title>Camera | Camagru</title>
   <link rel="stylesheet" href="style/global.css">
   <link rel="stylesheet" href="style/layout.css">
-  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/camera.css">
+  <script src='script/camera.js' defer></script>
 </head>
 <body>
   <?php include 'view/components/header.php'; ?>
-  Camera Page
+  <div class="body__container">
+    <main>
+      <div class="photo">
+        <video hidden></video>
+        <canvas></canvas>
+        <div id="take-photo-btn"><img width="30px" src="asset/photo-icon.svg"></div>
+      </div>
+      <div id="upload-btn">Upload</div>
+      <div class='superposable-container'>
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+        <img class='superposable' src='asset/superposable/thug-life.png' />
+      </div>
+    </main>
+    <aside class='draft-container'>
+      <img class='draft' src='https://picsum.photos/200/200' />
+      <img class='draft' src='https://picsum.photos/200/200' />
+      <img class='draft' src='https://picsum.photos/200/200' />
+      <img class='draft' src='https://picsum.photos/200/200' />
+    </aside>
+  </div>
   <?php include 'view/components/footer.php' ?>
 </body>
 </html>
