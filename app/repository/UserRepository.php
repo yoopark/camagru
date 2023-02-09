@@ -1,12 +1,13 @@
 <?php
 
-require_once 'repository/Database.php';
-require_once 'dto/User.php';
+require_once 'Database.php';
+require_once 'model/entity/User.php';
+require_once 'model/dto/UserCreationDTO.php';
 
 class UserRepository {
 
   private $db;
-  private $TABLE = 'user';
+  private const TABLE = 'user';
 
   function __construct(Database $db) {
     $this->db = $db;
@@ -22,7 +23,7 @@ class UserRepository {
     $password = $userCreationDTO->getPassword();
     $email = $userCreationDTO->getEmail();
     
-    $sql = "INSERT INTO $this->TABLE (username, password, email) VALUES (:username, :password, :email)";
+    $sql = "INSERT INTO self::TABLE (username, password, email) VALUES (:username, :password, :email)";
     $this->db->query($sql);
     $this->db->bind(":username", $username);
     $this->db->bind(":password", $password);
@@ -31,27 +32,27 @@ class UserRepository {
   }
 
   function updateUsername($id, $username) {
-    $this->db->update($this->TABLE, 'username', $username, 'id', $id);
+    $this->db->update(self::TABLE, 'username', $username, 'id', $id);
   }
 
   function updatePassword($id, $password) {
-    $this->db->update($this->TABLE, 'password', $password, 'id', $id);
+    $this->db->update(self::TABLE, 'password', $password, 'id', $id);
   }
 
   function updateEmail($id, $email) {
-    $this->db->update($this->TABLE, 'email', $email, 'id', $id);
+    $this->db->update(self::TABLE, 'email', $email, 'id', $id);
   }
 
   function updateEmailVerified($id, $email_verified) {
-    $this->db->update($this->TABLE, 'email_verified', $email_verified, 'id', $id);
+    $this->db->update(self::TABLE, 'email_verified', $email_verified, 'id', $id);
   }
 
   function updateEmailNotification($id, $email_notification) {
-    $this->db->update($this->TABLE, 'email_notification', $email_notification, 'id', $id);
+    $this->db->update(self::TABLE, 'email_notification', $email_notification, 'id', $id);
   }
 
   function deleteById($id) {
-    $this->db->delete($this->TABLE, 'id', $id);
+    $this->db->delete(self::TABLE, 'id', $id);
   }  
 }
 

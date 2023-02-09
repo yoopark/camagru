@@ -1,19 +1,20 @@
 <?php
 
-require_once 'repository/Database.php';
-require_once 'dto/Draft.php';
+require_once 'Database.php';
+require_once 'model/entity/Draft.php';
+require_once 'model/dto/DraftCreationDTO.php';
 
 class DraftRepository {
 
   private $db;
-  private $TABLE = 'draft';
+  private const TABLE = 'draft';
 
   function __construct(Database $db) {
     $this->db = $db;
   }
 
   function findByUserId($user_id) {
-    $result = $this->db->select($this->TABLE, 'user_id', $user_id);
+    $result = $this->db->select(self::TABLE, 'user_id', $user_id);
     return new Draft(); // Array of Drafts
   }
 
@@ -21,7 +22,7 @@ class DraftRepository {
     $user_id = $draftCreationDTO->getUserId();
     $image_url = $draftCreationDTO->getImageUrl();
     
-    $sql = "INSERT INTO $this->TABLE (user_id, image_url) VALUES (:user_id, :image_url)";
+    $sql = "INSERT INTO self::TABLE (user_id, image_url) VALUES (:user_id, :image_url)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":image_url", $image_url);
@@ -29,7 +30,7 @@ class DraftRepository {
   }
 
   function deleteById($id) {
-    $this->db->delete($this->TABLE, 'id', $id);
+    $this->db->delete(self::TABLE, 'id', $id);
   }  
 }
 

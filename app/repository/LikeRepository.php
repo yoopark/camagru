@@ -1,12 +1,13 @@
 <?php
 
-require_once 'repository/Database.php';
-require_once 'dto/Like.php';
+require_once 'Database.php';
+require_once 'model/entity/Like.php';
+require_once 'model/dto/LikeCreationDTO.php';
 
 class LikeRepository {
 
   private $db;
-  private $TABLE = 'like_';
+  private const TABLE = 'like_';
 
   function __construct(Database $db) {
     $this->db = $db;
@@ -26,7 +27,7 @@ class LikeRepository {
     $user_id = $likeCreationDTO->getUserId();
     $post_id = $likeCreationDTO->getPostId();
     
-    $sql = "INSERT INTO $this->TABLE (user_id, post_id) VALUES (:user_id, :post_id)";
+    $sql = "INSERT INTO self::TABLE (user_id, post_id) VALUES (:user_id, :post_id)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":post_id", $post_id);
@@ -38,7 +39,7 @@ class LikeRepository {
     if ($id === -1) {
       return;
     }
-    $this->db->delete($this->TABLE, 'id', $id);
+    $this->db->delete(self::TABLE, 'id', $id);
   }
 }
 

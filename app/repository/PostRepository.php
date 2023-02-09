@@ -1,12 +1,13 @@
 <?php
 
-require_once 'repository/Database.php';
-require_once 'dto/Post.php';
+require_once 'Database.php';
+require_once 'model/entity/Post.php';
+require_once 'model/dto/PostCreationDTO.php';
 
 class PostRepository {
 
   private $db;
-  private $TABLE = 'post';
+  private const TABLE = 'post';
 
   function __construct(Database $db) {
     $this->db = $db;
@@ -26,7 +27,7 @@ class PostRepository {
     $image_url = $postCreationDTO->getImageUrl();
     $description = $postCreationDTO->getDescription();
     
-    $sql = "INSERT INTO $this->TABLE (user_id, image_url, description) VALUES (:user_id, :image_url, :description)";
+    $sql = "INSERT INTO self::TABLE (user_id, image_url, description) VALUES (:user_id, :image_url, :description)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":image_url", $image_url);
@@ -35,11 +36,11 @@ class PostRepository {
   }
 
   function updateDescription($id, $description) {
-    $this->db->update($this->TABLE, 'description', $description, 'id', $id);
+    $this->db->update(self::TABLE, 'description', $description, 'id', $id);
   }
 
   function deleteById($id) {
-    $this->db->delete($this->TABLE, 'id', $id);
+    $this->db->delete(self::TABLE, 'id', $id);
   }  
 }
 

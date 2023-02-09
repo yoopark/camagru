@@ -1,19 +1,20 @@
 <?php
 
-require_once 'repository/Database.php';
-require_once 'dto/Comment.php';
+require_once 'Database.php';
+require_once 'model/entity/Comment.php';
+require_once 'model/dto/CommentCreationDTO.php';
 
 class CommentRepository {
 
   private $db;
-  private $TABLE = 'comment';
+  private const TABLE = 'comment';
 
   function __construct(Database $db) {
     $this->db = $db;
   }
 
   function findByPostId($post_id) {
-    $result = $this->db->select($this->TABLE, 'post_id', $post_id);
+    $result = $this->db->select(self::TABLE, 'post_id', $post_id);
     return new Comment(); // Array of Comments
   }
 
@@ -22,7 +23,7 @@ class CommentRepository {
     $post_id = $commentCreationDTO->getPostId();
     $text = $commentCreationDTO->getText();
     
-    $sql = "INSERT INTO $this->TABLE (user_id, post_id, text) VALUES (:user_id, :post_id, :text)";
+    $sql = "INSERT INTO self::TABLE (user_id, post_id, text) VALUES (:user_id, :post_id, :text)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":post_id", $post_id);
@@ -31,11 +32,11 @@ class CommentRepository {
   }
 
   function updateText($id, $text) {
-    $this->db->update($this->TABLE, 'text', $text, 'id', $id);
+    $this->db->update(self::TABLE, 'text', $text, 'id', $id);
   }
 
   function deleteById($id) {
-    $this->db->delete($this->TABLE, 'id', $id);
+    $this->db->delete(self::TABLE, 'id', $id);
   }  
 }
 
