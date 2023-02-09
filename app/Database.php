@@ -1,10 +1,13 @@
 <?php
 
 class Database {
-  private $pdo;
+  private static $pdo = null;
   private $stmt;
 
-  function __construct() {
+  public function __construct() {
+    if (self::$pdo) {
+      return;
+    }
     $host = getenv('DB_HOST');
     $port = getenv('DB_PORT');
     $name = getenv('DB_NAME');
@@ -14,15 +17,15 @@ class Database {
     $dsn = "mysql:host=$host;port=$port;dbname=$name";
 
     try {
-      $this->pdo = new PDO($dsn, $user, $password);
-      $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      self::$pdo = new PDO($dsn, $user, $password);
+      self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
       echo $e->getMessage(); // TODO: Error 페이지 만들기
     }
   }
 
   function query($sql) {
-    $this->stmt = $this->pdo->prepare($sql);
+    $this->stmt = self::$pdo->prepare($sql);
   }
 
   function bind($param, $value, $type = null) {
