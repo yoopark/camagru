@@ -1,48 +1,44 @@
 <?php
 
-class Router {
-  private array $handlers;
-
-  private const METHOD_GET = 'GET';
-  private const METHOD_POST = 'POST';
-  
-  function get(string $path, $handler) {
-    $this->addHandler(self::METHOD_GET, $path, $handler);
-  }
-
-  function post(string $path, $hanlder) {
-    $this->addHandler(self::METHOD_POST, $path, $handler);
-  }
-
-  private function addHandler(string $method, string $path, $handler) {
-    $this->handlers["$method $path"] = $handler;
-  }
-
-  function run() {
-    $method = $_SERVER['REQUEST_METHOD'];
-    $path = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-    if (array_key_exists("$method $path", $this->handlers)) {
-      $value = $this->handlers["$method $path"];
-      if (is_string($value)) {
-        require $value;
-      } else if (is_callable($value)) {
-        call_user_func($value);
-      }
-    } else {
-      self::abort();
-    }
-  }
-
-  private function abort($code = 404) {
-    http_response_code($code);
-    require "view/page/$code.php";
-    die();
-  }
-  
-}
+require 'Router.php';
 
 $router = new Router();
+
+/* Frontend */
 $router->get('/', 'view/page/index.php');
+$router->get('/login', 'view/page/login.php');
+$router->get('/signup', 'view/page/signup.php');
+$router->get('/camera', 'view/page/camera.php');
+$router->get('/settings', 'view/page/settings.php');
+
+
+/* Backend */
+$router->get('/api/user', function() {});
+$router->post('/api/user', function() {});
+$router->patch('/api/user', function() {});
+$router->delete('/api/user', function() {});
+$router->post('/api/login', function() {});
+$router->post('/api/logout', function() {});
+
+$router->get('/api/post/new', function() {});
+$router->get('/api/post', function() {});
+$router->post('/api/post', function() {});
+$router->patch('/api/post', function() {});
+$router->delete('/api/post', function() {});
+
+$router->get('/api/draft/me', function() {});
+$router->post('/api/draft', function() {});
+$router->delete('/api/draft', function() {});
+
+$router->get('/api/comment', function() {});
+$router->post('/api/comment', function() {});
+$router->patch('/api/comment', function() {});
+$router->delete('/api/comment', function() {});
+
+$router->get('/api/like', '');
+$router->post('/api/like', '');
+$router->delete('/api/like', '');
 
 $router->run();
+
+?>
