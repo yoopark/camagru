@@ -6,9 +6,9 @@ class PostCreationDTO {
   private $description;
 
   function __construct($user_id, $image_url, $description) {
-    $this->$user_id = $user_id;
-    $this->$image_url = $image_url;
-    $this->$description = $description;
+    $this->user_id = $user_id;
+    $this->image_url = $image_url;
+    $this->description = $description;
   }
 
   function getUserId() { return $this->user_id; }

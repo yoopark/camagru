@@ -13,16 +13,16 @@ require_once 'repository/CommentRepository.php';
 /* Model */
 $db = new Database();
 
-$userRepository = new UserRepository($db);
-$postRepository = new PostRepository($db);
-$draftRepository = new DraftRepository($db);
-$likeRepository = new LikeRepository($db);
-$commentRepository = new CommentRepository($db);
+$user_repository = new UserRepository($db);
+$post_repository = new PostRepository($db);
+$draft_repository = new DraftRepository($db);
+$like_repository = new LikeRepository($db);
+$comment_repository = new CommentRepository($db);
 
-$authService = new AuthService($userRepository);
+$auth_service = new AuthService($user_repository);
 
 /* Controller */
-$controller = new Controller($authService);
+$controller = new Controller($auth_service);
 
 $router = new Router($controller);
 $router->run();
