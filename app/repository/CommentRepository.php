@@ -23,7 +23,7 @@ class CommentRepository {
     $post_id = $commentCreationDTO->getPostId();
     $text = $commentCreationDTO->getText();
     
-    $sql = "INSERT INTO self::TABLE (user_id, post_id, text) VALUES (:user_id, :post_id, :text)";
+    $sql = "INSERT INTO ".self::TABLE." (user_id, post_id, text) VALUES (:user_id, :post_id, :text)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":post_id", $post_id);

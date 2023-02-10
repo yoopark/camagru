@@ -27,7 +27,7 @@ class LikeRepository {
     $user_id = $likeCreationDTO->getUserId();
     $post_id = $likeCreationDTO->getPostId();
     
-    $sql = "INSERT INTO self::TABLE (user_id, post_id) VALUES (:user_id, :post_id)";
+    $sql = "INSERT INTO ".self::TABLE." (user_id, post_id) VALUES (:user_id, :post_id)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":post_id", $post_id);

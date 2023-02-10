@@ -14,7 +14,7 @@ class UserRepository {
   }
 
   function findById($id) {
-    $result = $this->db->select($this->TABLE, 'id', $id);
+    $result = $this->db->select(self::TABLE, 'id', $id);
     return new User(); // Array of Users
   }
 
@@ -23,7 +23,7 @@ class UserRepository {
     $password = $userCreationDTO->getPassword();
     $email = $userCreationDTO->getEmail();
     
-    $sql = "INSERT INTO self::TABLE (username, password, email) VALUES (:username, :password, :email)";
+    $sql = "INSERT INTO ".self::TABLE." (username, password, email) VALUES (:username, :password, :email)";
     $this->db->query($sql);
     $this->db->bind(":username", $username);
     $this->db->bind(":password", $password);

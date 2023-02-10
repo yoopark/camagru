@@ -27,7 +27,7 @@ class PostRepository {
     $image_url = $postCreationDTO->getImageUrl();
     $description = $postCreationDTO->getDescription();
     
-    $sql = "INSERT INTO self::TABLE (user_id, image_url, description) VALUES (:user_id, :image_url, :description)";
+    $sql = "INSERT INTO ".self::TABLE." (user_id, image_url, description) VALUES (:user_id, :image_url, :description)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":image_url", $image_url);

@@ -22,7 +22,7 @@ class DraftRepository {
     $user_id = $draftCreationDTO->getUserId();
     $image_url = $draftCreationDTO->getImageUrl();
     
-    $sql = "INSERT INTO self::TABLE (user_id, image_url) VALUES (:user_id, :image_url)";
+    $sql = "INSERT INTO ".self::TABLE." (user_id, image_url) VALUES (:user_id, :image_url)";
     $this->db->query($sql);
     $this->db->bind(":user_id", $user_id);
     $this->db->bind(":image_url", $image_url);
