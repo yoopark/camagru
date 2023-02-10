@@ -32,10 +32,12 @@
       </div>
     </main>
     <aside class='draft-container'>
-      <img class='draft' src='https://picsum.photos/200/200' />
-      <img class='draft' src='https://picsum.photos/200/200' />
-      <img class='draft' src='https://picsum.photos/200/200' />
-      <img class='draft' src='https://picsum.photos/200/200' />
+      <img class='draft' src='https://picsum.photos/300/300' />
+      <img class='draft' src='https://picsum.photos/300/300' />
+      <img class='draft' src='https://picsum.photos/300/300' />
+      <img class='draft' src='https://picsum.photos/300/300' />
+      <img class='draft' src='https://picsum.photos/300/300' />
+      <img class='draft' src='https://picsum.photos/300/300' />
     </aside>
   </div>
   <?php include 'view/components/footer.php' ?>

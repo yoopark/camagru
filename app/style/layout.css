@@ -1,6 +1,9 @@
 @import 'variables.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
+
 .header {
+  font-family: 'Rubik 80s Fade', cursive;
   background-color: var(--bg-main-color);
   display: flex;
   width: 100%;

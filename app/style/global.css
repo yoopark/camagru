@@ -1,9 +1,9 @@
 @import 'variables.css';
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 html {
-  font-family: 'Rubik 80s Fade', cursive;
+  font-family: 'Lato', sans-serif;
   background-image: url('/asset/y2k-bg.webp');
 }
 

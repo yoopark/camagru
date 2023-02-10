@@ -12,7 +12,24 @@
 </head>
 <body>
   <?php include 'view/components/header.php'; ?>
-  Signup Page
+  <div class="body__container">
+    <form class="form" action="/api/signup" method="POST">
+      <div class="form__input">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+      </div>
+      <div class="form__input">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+      </div>
+      <div class="form__input">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Forgot password?</p>
+  </div>
   <?php include 'view/components/footer.php' ?>
 </body>
 </html>

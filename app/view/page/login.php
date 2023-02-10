@@ -8,11 +8,24 @@
   <title>Login | Camagru</title>
   <link rel="stylesheet" href="style/global.css">
   <link rel="stylesheet" href="style/layout.css">
-  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/login.css">
 </head>
 <body>
   <?php include 'view/components/header.php'; ?>
-  Login Page
+  <div class="body__container">
+    <form class="form" action="/api/login" method="POST">
+      <div class="form__input">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+      </div>
+      <div class="form__input">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Forgot password?</p>
+  </div>
   <?php include 'view/components/footer.php' ?>
 </body>
 </html>
