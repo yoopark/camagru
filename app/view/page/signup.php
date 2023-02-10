@@ -8,7 +8,7 @@
   <title>Sign Up | Camagru</title>
   <link rel="stylesheet" href="style/global.css">
   <link rel="stylesheet" href="style/layout.css">
-  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style/signup.css">
 </head>
 <body>
   <?php include 'view/components/header.php'; ?>
@@ -28,7 +28,6 @@
       </div>
       <button type="submit">Sign Up</button>
     </form>
-    <p>Forgot password?</p>
   </div>
   <?php include 'view/components/footer.php' ?>
 </body>
