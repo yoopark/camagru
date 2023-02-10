@@ -22,8 +22,8 @@ class Router {
     $this->get('/settings', 'view/page/settings.php');
     
     $this->get('/api/user', function() {});
-    $this->post('/api/user', function() {});
-    $this->patch('/api/user', function() {});
+    $this->post('/api/user', function() { $this->controller->signup(); });
+    $this->put('/api/user', function() {});
     $this->delete('/api/user', function() {});
     $this->post('/api/login', function() { $this->controller->login(); });
     $this->get('/api/logout', function() { $this->controller->logout(); }); // TODO: GET -> POST로 변경

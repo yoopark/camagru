@@ -13,7 +13,7 @@
 <body>
   <?php include 'view/components/header.php'; ?>
   <div class="body__container">
-    <form class="form" action="/api/signup" method="POST">
+    <form class="form" action="/api/user" method="POST">
       <div class="form__input">
         <label for="username"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="username" required>
